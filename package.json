@@ -1,0 +1,14 @@
+{
+  "name": "engineering-intelligence",
+  "version": "3.0.0",
+  "description": "AI Prompt Architect: transforma um pedido simples num prompt técnico completo de engenharia, DevSecOps e AppSec.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "author": "Ana Caroline Lamas <carollamas@cyberhuntlab.com.br>",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "dev": "npx vercel dev"
+  }
+}

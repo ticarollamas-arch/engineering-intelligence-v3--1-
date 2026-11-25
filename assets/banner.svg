@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="Engineering Intelligence">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#111C33"/>
+    </linearGradient>
+    <linearGradient id="ac" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1E293B" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="300" rx="18" fill="url(#bg)"/>
+  <rect width="1200" height="300" rx="18" fill="url(#grid)" opacity="0.55"/>
+  <rect x="0" y="292" width="1200" height="8" fill="url(#ac)"/>
+  <g transform="translate(70 82)">
+    <path d="M68 0 127 34v68L68 136 9 102V34Z" fill="#0B1220" stroke="url(#ac)" stroke-width="6"/>
+    <circle cx="68" cy="68" r="12" fill="#22D3EE"/>
+    <path d="M68 56V30M78 74l22 12M58 74 36 86" stroke="#8B5CF6" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="68" cy="28" r="6" fill="#8B5CF6"/><circle cx="102" cy="88" r="6" fill="#8B5CF6"/><circle cx="34" cy="88" r="6" fill="#8B5CF6"/>
+  </g>
+  <text x="240" y="138" font-family="Segoe UI, Inter, Helvetica, Arial, sans-serif" font-size="50" font-weight="700" fill="#E6EDF7">Engineering Intelligence</text>
+  <text x="240" y="184" font-family="Segoe UI, Inter, Helvetica, Arial, sans-serif" font-size="24" fill="#94A3B8">AI Prompt Architect: do pedido simples ao plano técnico</text>
+  <text x="240" y="232" font-family="JetBrains Mono, Consolas, monospace" font-size="18" fill="#22D3EE">devsecops · appsec · owasp · nist · cloud · ia</text>
+  <text x="1130" y="268" text-anchor="end" font-family="Segoe UI, Inter, Helvetica, Arial, sans-serif" font-size="16" fill="#64748B">Ana Caroline Lamas · cyberhuntlab.com.br</text>
+</svg>

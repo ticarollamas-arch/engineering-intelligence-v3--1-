@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Engineering Intelligence — AI Prompt Architect</title>
+<meta name="description" content="Transforma um pedido simples num prompt técnico completo: especialidades, normas, segurança, testes e critérios de aceitação.">
+<meta name="theme-color" content="#060b16">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap row">
+    <a class="brand" href="./"><img src="assets/icon.svg" alt="" width="24" height="24"><span>Engineering Intelligence</span></a>
+    <nav class="nav"><a href="#como">Como funciona</a><a class="btn ghost sm" href="https://github.com/ticarollamas-arch/engineering-intelligence" target="_blank" rel="noopener">Código ↗</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">AI PROMPT ARCHITECT</p>
+    <h1>Descreva o que quer construir.<br><span class="grad">Receba o plano técnico.</span></h1>
+    <p class="lead">O motor identifica o tipo de projeto, ativa as especialidades certas, seleciona normas como OWASP, NIST e LGPD só quando se aplicam, e transforma tudo em requisitos verificáveis, com rastreabilidade, revisão crítica e nota de qualidade.</p>
+  </section>
+
+  <nav class="modnav" role="tablist" aria-label="Módulos">
+    <button role="tab" data-mod="prompt" class="on" aria-selected="true">Prompt técnico</button>
+    <button role="tab" data-mod="startups">Startups e ideias</button>
+    <button role="tab" data-mod="hackathon">Hackathon</button>
+    <button role="tab" data-mod="pesquisa">Pesquisa</button>
+    <button role="tab" data-mod="historico">Histórico e favoritos</button>
+    <button role="tab" data-mod="config">Configurações</button>
+  </nav>
+
+  <div class="mod" id="mod-prompt">
+  <section class="card input" aria-labelledby="lbl">
+    <label id="lbl" for="pedido">O que você quer criar, corrigir, pesquisar ou implantar?</label>
+    <textarea id="pedido" rows="4" maxlength="2000" placeholder="Ex.: quero desenvolver uma loja virtual com pagamento por Pix"></textarea>
+    <div class="examples" id="examples" aria-label="Exemplos"></div>
+    <div class="actions">
+      <label class="toggle" id="aiToggle" title="Disponível quando a IA estiver configurada no servidor">
+        <input type="checkbox" id="useAI" disabled><span class="track"></span><span id="aiLabel">Refinar com IA (indisponível)</span>
+      </label>
+      <label class="lvl" for="comercial">Negócio
+        <select id="comercial"><option value="">Automático</option><option value="sim">Analisar</option><option value="nao">Não analisar</option></select>
+      </label>
+      <label class="lvl" for="nivel">Nível
+        <select id="nivel"><option value="">Automático</option><option value="essencial">Essencial</option><option value="profissional">Profissional</option><option value="avancado">Avançado</option><option value="enterprise">Enterprise</option></select>
+      </label>
+      <span class="count" id="count">0/2000</span>
+      <button class="btn pri" id="go" type="button">Gerar prompt</button>
+    </div>
+    <p class="err" id="err" role="alert" hidden></p>
+  </section>
+
+  <section id="result" class="result" hidden aria-live="polite">
+    <p class="note" id="interp" hidden></p>
+    <div class="summary">
+      <div class="card"><h2>Objetivo identificado</h2><p id="rObj"></p><p class="mode"><span class="dot"></span><span id="rMode"></span> · <span id="rSrc"></span></p></div>
+      <div class="card"><h2>Especialidades ativadas</h2><div class="chips" id="rSpec"></div><ul class="cls" id="rCls"></ul></div>
+    </div>
+    <div class="summary">
+      <div class="card"><h2>Normas e referenciais aplicáveis</h2><ul class="refs" id="rRefs"></ul></div>
+      <div class="card quality"><h2>Qualidade do prompt</h2>
+        <div class="score"><b id="qTotal">0</b><span>/100</span></div>
+        <ul class="crit" id="qCrit"></ul>
+        <div class="defs" id="qDefs"></div>
+        <p class="small" id="qAviso"></p>
+      </div>
+    </div>
+    <div class="card prompt">
+      <div class="phead">
+        <h2>Prompt final</h2>
+        <div class="tabs" id="tabs" hidden><button class="tab on" data-t="local" type="button">Motor local</button><button class="tab" data-t="ia" type="button">Refinado por IA</button></div>
+        <div class="pacts"><button class="btn ghost sm" id="copy" type="button">Copiar</button><button class="btn ghost sm" id="dl" type="button">Baixar .md</button></div>
+      </div>
+      <p class="note" id="aiNote" hidden></p>
+      <pre id="rPrompt" tabindex="0"></pre>
+    </div>
+    <div class="summary" id="bizRow">
+      <div class="card" id="secCard"><h2>Autenticação, painel e pagamentos</h2><div id="rSec"></div></div>
+      <div class="card" id="bizCard"><h2>Negócio e viabilidade</h2><div id="rBiz"></div></div>
+    </div>
+    <div class="card" id="traceCard"><h2>Matriz de rastreabilidade</h2><div class="tablewrap"><table class="trace"><thead><tr><th>Requisito</th><th>Componente</th><th>Controle</th><th>Teste</th><th>Aceitação</th></tr></thead><tbody id="rTrace"></tbody></table></div></div>
+    <div class="card"><h2>Revisão crítica</h2><ul class="checks" id="rChecks"></ul></div>
+    <details class="card learn" id="learnCard"><summary><h2>Aprender com este projeto</h2><span class="small">glossário, fluxo, decisões, comandos e exercícios</span></summary><div id="rLearn"></div></details>
+    <div class="summary">
+      <div class="card"><h2>Entregáveis esperados</h2><ul id="rDel"></ul></div>
+      <div class="card"><h2>Critérios de validação</h2><ul id="rVal"></ul></div>
+    </div>
+  </section>
+
+  </div>
+
+  <div class="mod" id="mod-startups" hidden>
+    <section class="card input">
+      <label for="tema">Tema ou nicho (opcional)</label>
+      <input id="tema" class="field" placeholder="Ex.: saúde, fraude em pagamentos, dados abertos, ONGs">
+      <div class="actions"><span class="count" id="cap"></span><button class="btn pri" id="genIdeas" type="button">Gerar ideias</button><button class="btn ghost" id="moreIdeas" type="button" hidden>Mais ideias</button></div>
+      <p class="note">As ideias são combinações de problemas, segmentos e abordagens, criadas sob demanda. Problema, público e demanda são <b>hipóteses a validar</b>: a ferramenta não pesquisou o mercado.</p>
+    </section>
+    <div class="grid" id="ideas"></div>
+    <section class="card" id="ideaDetail" hidden></section>
+  </div>
+
+  <div class="mod" id="mod-hackathon" hidden>
+    <section class="card input">
+      <label for="reg">Cole o regulamento da competição (recomendado)</label>
+      <textarea id="reg" rows="6" placeholder="Tema, critérios de avaliação com pesos, prazos, tecnologias permitidas, regras de submissão..."></textarea>
+      <label for="hTema" class="sub">Ou informe só o tema</label>
+      <input id="hTema" class="field" placeholder="Ex.: cidades inteligentes">
+      <div class="actions"><button class="btn pri" id="genHack" type="button">Gerar projetos</button></div>
+    </section>
+    <div id="hackOut"></div>
+  </div>
+
+  <div class="mod" id="mod-pesquisa" hidden>
+    <section class="card input">
+      <label for="q">O que pesquisar?</label>
+      <input id="q" class="field" placeholder="Ex.: no-show em clínicas, webhooks hotmart, automação para ONGs">
+      <div class="examples" id="fontes"></div>
+      <div class="actions"><button class="btn pri" id="doSearch" type="button">Pesquisar</button></div>
+      <p class="note">Resultados são sinais para orientar a validação. Não comprovam demanda, receita nem originalidade.</p>
+    </section>
+    <div id="searchOut"></div>
+  </div>
+
+  <div class="mod" id="mod-historico" hidden>
+    <div class="summary">
+      <section class="card"><div class="phead"><h2>Histórico</h2><div class="pacts"><button class="btn ghost sm" id="expHist" type="button">Exportar</button><button class="btn ghost sm" id="clrHist" type="button">Limpar</button></div></div><ul class="hist" id="hist"></ul></section>
+      <section class="card"><div class="phead"><h2>Favoritos</h2><div class="pacts"><button class="btn ghost sm" id="expFav" type="button">Exportar</button></div></div><ul class="hist" id="favs"></ul></section>
+    </div>
+    <p class="small">Histórico e favoritos ficam só neste navegador (armazenamento local) e podem ser apagados a qualquer momento.</p>
+  </div>
+
+  <div class="mod" id="mod-config" hidden>
+    <div class="summary">
+      <section class="card"><h2>Provedor de IA</h2><div id="cfgIA"></div></section>
+      <section class="card"><h2>Consumo desta instância</h2><div id="cfgUse"></div></section>
+    </div>
+    <section class="card"><h2>Fontes de pesquisa</h2><ul class="refs" id="cfgSrc"></ul></section>
+    <p class="small">Chaves e limites são configurados nas variáveis de ambiente do servidor (veja .env.example). Nada disso é salvo no navegador.</p>
+  </div>
+
+  <section id="como" class="how">
+    <h2>Como funciona</h2>
+    <ol class="steps">
+      <li><b>Interpretação</b><span>entende pedidos informais e com erros, combina domínios e aponta conflitos e lacunas.</span></li>
+      <li><b>Especialistas</b><span>monta a equipe certa: AppSec, DevSecOps, mobile, dados, IA, infraestrutura.</span></li>
+      <li><b>Requisitos</b><span>gera requisitos com ID, entradas, saídas, aceitação e teste, e só as normas pertinentes.</span></li>
+      <li><b>Revisão</b><span>remove repetições e frases genéricas, revisa a própria saída e dá uma nota explicada.</span></li>
+    </ol>
+    <p class="small">O motor local roda no seu navegador, sem enviar nada. O refinamento por IA, quando ativado pela dona do servidor, tem limite de uso por visitante.</p>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap row">
+    <span>Engineering Intelligence · por <a href="https://cyberhuntlab.com.br">Ana Caroline Lamas</a></span>
+    <span class="small">v<span id="ver">3.0.0</span> · MIT</span>
+  </div>
+</footer>
+<script type="module" src="app.js"></script>
+<script type="module" src="modules.js"></script>
+</body>
+</html>
